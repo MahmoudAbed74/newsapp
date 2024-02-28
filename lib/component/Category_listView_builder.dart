@@ -1,4 +1,5 @@
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class Category_listView_builder extends StatelessWidget {
@@ -6,7 +7,9 @@ class Category_listView_builder extends StatelessWidget {
     super.key,
   });
 
-
+  List<Category> categoryList = [
+    
+  ]
   @override
   Widget build(BuildContext context) {
     return SizedBox(

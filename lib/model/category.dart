@@ -1,6 +1,6 @@
-class Category {
+class CategoryItem {
   final String imgPath;
   final String textImg;
 
- const Category({required this.imgPath, required this.textImg});
+  const CategoryItem({required this.imgPath, required this.textImg});
 }

@@ -8,7 +8,7 @@ class CategoryCard extends StatelessWidget {
     required this.category,
   });
 
-  final Category category;
+  final CategoryItem category;
 
   @override
   Widget build(BuildContext context) {
