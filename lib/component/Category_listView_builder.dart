@@ -1,27 +1,33 @@
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'package:newsapp/component/CategoryCard.dart';
+import 'package:newsapp/model/category.dart';
 
 class Category_listView_builder extends StatelessWidget {
   const Category_listView_builder({
     super.key,
   });
 
-  List<Category> categoryList = [
-    
-  ]
+  final List<CategoryItem> categoryList = const [
+    CategoryItem(imgPath: "assets/Technology.jpg", textImg: "Technology"),
+    CategoryItem(imgPath: "assets/enterminter.jpg", textImg: "Entertainment"),
+    CategoryItem(imgPath: "assets/Bussiness.jpg", textImg: "Bussiness"),
+    CategoryItem(imgPath: "assets/Maps.jpg", textImg: "Maps"),
+    CategoryItem(imgPath: "assets/news.jpg", textImg: "News"),
+    CategoryItem(imgPath: "assets/sports.jpg", textImg: "Sports"),
+  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: 10,
+        itemCount: categoryList.length,
         itemBuilder: (context, index) {
-          return const Padding(
-            padding: EdgeInsets.only(right: 15),
-            child: CategoryCard(
-                imgPath: "assets/Technology.jpg", textImg: "Technology"),
+          return Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: CategoryCard(category: categoryList[index]),
           );
         },
       ),
