@@ -22,6 +22,7 @@ class Category_listView_builder extends StatelessWidget {
     return SizedBox(
       height: 100,
       child: ListView.builder(
+        shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: categoryList.length,
         itemBuilder: (context, index) {

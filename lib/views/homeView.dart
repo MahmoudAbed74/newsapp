@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsapp/component/CategoryCard.dart';
 import 'package:newsapp/component/Category_listView_builder.dart';
+import 'package:newsapp/component/news_tile_list.dart';
 
 class HomeViewPage extends StatelessWidget {
   const HomeViewPage({super.key});
@@ -33,8 +33,19 @@ class HomeViewPage extends StatelessWidget {
           ],
         ),
       ),
-      body: Category_listView_builder(),
+      body: const CustomScrollView(
+        slivers: <Widget>[
+          SliverToBoxAdapter(
+            child: Category_listView_builder(),
+          ),
+          SliverToBoxAdapter(
+            child: SizedBox(
+              height: 22,
+            ),
+          ),
+          NewsTile_listView_bulider()
+        ],
+      ),
     );
   }
 }
-
