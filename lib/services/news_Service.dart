@@ -4,8 +4,7 @@ import 'package:newsapp/model/articalModel.dart';
 
 class news_service {
   final Dio dio;
-  final ArticalModel articalModel;
-  const news_service(this.dio, this.articalModel);
+  const news_service(this.dio);
 
   getGeneralNews() async {
     Response response = await dio.get(
@@ -15,7 +14,7 @@ class news_service {
     List<dynamic> articles = jsonData["articles"];
     List<ArticalModel> articalList = articles
         .map((e) => ArticalModel(
-            img: e[jsonData['urlToImage']],
+            img: e[['urlToImage']],
             title: e["title"],
             subTitle: e["description"]))
         .toList();

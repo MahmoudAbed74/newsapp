@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
-import 'package:newsapp/model/articalModel.dart';
 import 'package:newsapp/services/news_Service.dart';
 import 'package:newsapp/views/homeView.dart';
 
 void main() {
-  news_service(Dio(),).getGeneralNews();
+  news_service(Dio()).getGeneralNews();
   runApp(const NewsApp());
 }
 
