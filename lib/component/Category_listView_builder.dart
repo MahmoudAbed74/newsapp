@@ -1,5 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'package:dio/dio.dart';
 
 import 'package:newsapp/component/CategoryCard.dart';
 import 'package:newsapp/model/category.dart';
@@ -21,16 +22,21 @@ class Category_listView_builder extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: categoryList.length,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 15),
-            child: CategoryCard(category: categoryList[index]),
-          );
+      child: GestureDetector(
+        onTap: () {
+          print("object");
         },
+        child: ListView.builder(
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemCount: categoryList.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.only(right: 15),
+              child: CategoryCard(category: categoryList[index]),
+            );
+          },
+        ),
       ),
     );
   }
