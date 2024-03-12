@@ -6,36 +6,15 @@ import 'package:newsapp/component/NewsTile.dart';
 import 'package:newsapp/model/articalModel.dart';
 import 'package:newsapp/services/news_Service.dart';
 
-class NewsTile_listView_bulider extends StatefulWidget {
-  const NewsTile_listView_bulider({super.key});
+class NewsTile_listView_bulider extends StatelessWidget {
+  const NewsTile_listView_bulider({super.key , required this.articales});
 
-  @override
-  State<NewsTile_listView_bulider> createState() =>
-      _NewsTile_listView_buliderState();
-}
-
-class _NewsTile_listView_buliderState extends State<NewsTile_listView_bulider> {
-  List<ArticalModel> articales = [];
-  bool isLoading = true;
-  @override
-  void initState() {
-    getGeneralNews();
-    super.initState();
-  }
-
-  Future<void> getGeneralNews() async {
-    articales = await news_service(Dio()).getGeneralNews();
-    isLoading = false;
-    setState(() {});
-  }
+ final List<ArticalModel> articales ;
 
   // final List<NewsTileModel> newTileList = const [
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator()))
-        : SliverList(
+    return SliverList(
             delegate: SliverChildBuilderDelegate(
               childCount: articales.length,
               (context, index) {
