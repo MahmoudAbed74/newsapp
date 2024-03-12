@@ -1,69 +1,47 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsapp/component/NewsTile.dart';
-import 'package:newsapp/model/NewsTileModel.dart';
+import 'package:dio/dio.dart';
 
-class NewsTile_listView_bulider extends StatelessWidget {
+import 'package:newsapp/component/NewsTile.dart';
+import 'package:newsapp/model/articalModel.dart';
+import 'package:newsapp/services/news_Service.dart';
+
+class NewsTile_listView_bulider extends StatefulWidget {
   const NewsTile_listView_bulider({super.key});
-  final List<NewsTileModel> newTileList = const [
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-    NewsTileModel(
-        titleText:
-            "Deco meets with Haaland's agents.. Will Laporta achieve his big dream?",
-        bodyText:
-            "Today, Wednesday, a Spanish press report sparked a huge surprise about a meeting between Barcelona’s management and the agents of the Norwegian player Erling Haaland, the Manchester City striker.",
-        imgPath: "assets/newsposts/news1.jpg"),
-  ];
+
+  @override
+  State<NewsTile_listView_bulider> createState() =>
+      _NewsTile_listView_buliderState();
+}
+
+class _NewsTile_listView_buliderState extends State<NewsTile_listView_bulider> {
+  List<ArticalModel> articales = [];
+  bool isLoading = true;
+  @override
+  void initState() {
+    getGeneralNews();
+    super.initState();
+  }
+
+  Future<void> getGeneralNews() async {
+    articales = await news_service(Dio()).getGeneralNews();
+    isLoading = false;
+    setState(() {});
+  }
+
+  // final List<NewsTileModel> newTileList = const [
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        childCount:newTileList.length ,
-        (context, index) {
-          return NewsTile(newsTileModel: newTileList[index]);
-        },
-      ),
-    );
+    return isLoading
+        ? const SliverToBoxAdapter(
+            child: Center(child: CircularProgressIndicator()))
+        : SliverList(
+            delegate: SliverChildBuilderDelegate(
+              childCount: articales.length,
+              (context, index) {
+                return NewsTile(articalModel: articales[index]);
+              },
+            ),
+          );
   }
 }
