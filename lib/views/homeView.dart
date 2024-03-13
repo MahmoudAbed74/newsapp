@@ -84,22 +84,16 @@ class _displayNewsDataState extends State<displayNewsData> {
     return FutureBuilder(
       future: news_service(Dio()).getGeneralNews(),
       builder: (context, snapshot) {
-       if (snapshot.hasData){
-
-        return NewsTile_listView_bulider(
-                articales: snapshot.data!) ;
-       }
-       else if (snapshot.hasError){
-
-        const SliverToBoxAdapter(child: Text("Opss is not return data "),);
-       } else {
-
-        return  const Center(child: CircularProgressIndicator()) ;
-       }
-       
-        
+        if (snapshot.hasData) {
+          return NewsTile_listView_bulider(articales: snapshot.data!);
+        } else if (snapshot.hasError) {
+         return const SliverToBoxAdapter(
+            child: Text("Opss is not return data "),
+          );
+        } else {
+          return const Center(child: CircularProgressIndicator());
+        }
       },
     );
-   
   }
 }
