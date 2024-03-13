@@ -83,8 +83,9 @@ class _displayNewsDataState extends State<displayNewsData> {
     return isLoading
         ? const SliverToBoxAdapter(
             child: Center(child: CircularProgressIndicator()))
-        : NewsTile_listView_bulider(
+        : articales.isNotEmpty ? NewsTile_listView_bulider(
             articales: articales,
-          );
+          ) :
+            const SliverToBoxAdapter(child: Text("Opss is not return data "),);
   }
 }

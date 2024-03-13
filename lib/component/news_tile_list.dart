@@ -11,7 +11,6 @@ class NewsTile_listView_bulider extends StatelessWidget {
 
  final List<ArticalModel> articales ;
 
-  // final List<NewsTileModel> newTileList = const [
   @override
   Widget build(BuildContext context) {
     return SliverList(
