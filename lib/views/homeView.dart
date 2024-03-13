@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 
 import 'package:newsapp/component/Category_listView_builder.dart';
+import 'package:newsapp/component/NewsTile.dart';
 import 'package:newsapp/component/news_tile_list.dart';
 import 'package:newsapp/model/articalModel.dart';
 import 'package:newsapp/services/news_Service.dart';
@@ -64,28 +65,40 @@ class displayNewsData extends StatefulWidget {
 }
 
 class _displayNewsDataState extends State<displayNewsData> {
-  List<ArticalModel> articales = [];
+  // List<ArticalModel> articales = [];
   bool isLoading = true;
-  @override
-  void initState() {
-    getGeneralNews();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   getGeneralNews();
+  //   super.initState();
+  // }
 
-  Future<void> getGeneralNews() async {
-    articales = await news_service(Dio()).getGeneralNews();
-    isLoading = false;
-    setState(() {});
-  }
+  // Future<void> getGeneralNews() async {
+  //   articales = await news_service(Dio()).getGeneralNews();
+  //   isLoading = false;
+  //   setState(() {});
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return isLoading
-        ? const SliverToBoxAdapter(
-            child: Center(child: CircularProgressIndicator()))
-        : articales.isNotEmpty ? NewsTile_listView_bulider(
-            articales: articales,
-          ) :
-            const SliverToBoxAdapter(child: Text("Opss is not return data "),);
+    return FutureBuilder(
+      future: news_service(Dio()).getGeneralNews(),
+      builder: (context, snapshot) {
+        snapshot.data != null ? isLoading = false : isLoading = true;
+        return isLoading
+            ? const SliverToBoxAdapter(
+                child: Center(child: CircularProgressIndicator()))
+            : NewsTile_listView_bulider(
+                articales: snapshot.data ?? [],
+              );
+      },
+    );
+    // isLoading
+    //     ? const SliverToBoxAdapter(
+    //         child: Center(child: CircularProgressIndicator()))
+    //     : articales.isNotEmpty ? NewsTile_listView_bulider(
+    //         articales: articales,
+    //       ) :
+    //         const SliverToBoxAdapter(child: Text("Opss is not return data "),);
   }
 }
