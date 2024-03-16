@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsapp/model/NewsTileModel.dart';
 import 'package:newsapp/model/articalModel.dart';
 import 'package:newsapp/services/news_Service.dart';
 
