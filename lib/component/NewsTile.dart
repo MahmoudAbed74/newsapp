@@ -15,7 +15,7 @@ class NewsTile extends StatelessWidget {
       child: Column(
         children: [
           articalModel.img != null
-              ? Image.asset(
+              ? Image.network(
                   articalModel.img!,
                   fit: BoxFit.fill,
                 )
