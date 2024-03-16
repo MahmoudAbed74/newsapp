@@ -25,7 +25,10 @@ class CategoryCard extends StatelessWidget {
           child: Text(
         category.textImg,
         style: const TextStyle(
-            color: Colors.white, fontSize: 15, fontWeight: FontWeight.bold),
+          color: Colors.yellow,
+          fontSize: 30,
+          fontWeight: FontWeight.bold,
+        ),
       )),
     );
   }

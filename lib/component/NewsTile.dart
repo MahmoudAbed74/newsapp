@@ -21,14 +21,18 @@ class NewsTile extends StatelessWidget {
                 )
               : Image.asset("assets/sports.jpg"),
           Text(
-            articalModel.title,
+            articalModel.title == null || articalModel.title == "[Removed]"
+                ? " "
+                : articalModel.title,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
                 color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
           ),
           Text(
-            articalModel.subTitle ?? "",
+            articalModel.subTitle == null || articalModel.title == "[Removed]"
+                ? " "
+                : articalModel.subTitle!,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(

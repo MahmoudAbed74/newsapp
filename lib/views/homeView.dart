@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsapp/component/Category_listView_builder.dart';
 import 'package:newsapp/component/CustomeListView.dart';
-import 'package:newsapp/component/DisplayData.dart';
-import 'package:newsapp/component/DisplayData.dart';
+
 
 class HomeViewPage extends StatelessWidget {
   const HomeViewPage({super.key});

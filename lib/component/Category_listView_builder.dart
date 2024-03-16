@@ -24,11 +24,15 @@ class Category_listView_builder extends StatelessWidget {
     CategoryItem(
         imgPath: "assets/Bussiness.jpg",
         textImg: "Bussiness",
-        categoryName: "Bussiness"),
+        categoryName: "business"),
     CategoryItem(
-        imgPath: "assets/Maps.jpg", textImg: "Maps", categoryName: "science"),
+        imgPath: "assets/science.jpg",
+        textImg: "science",
+        categoryName: "science"),
     CategoryItem(
-        imgPath: "assets/news.jpg", textImg: "News", categoryName: "health"),
+        imgPath: "assets/health.jpg",
+        textImg: "health",
+        categoryName: "health"),
     CategoryItem(
         imgPath: "assets/sports.jpg",
         textImg: "Sports",

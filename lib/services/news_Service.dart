@@ -13,12 +13,8 @@ class news_service {
       Map<String, dynamic> jsonData = response.data;
 
       List<dynamic> articles = jsonData["articles"];
-      List<ArticalModel> articalList = articles
-          .map((e) => ArticalModel(
-              img: e[['urlToImage']],
-              title: e["title"],
-              subTitle: e["description"]))
-          .toList();
+      List<ArticalModel> articalList =
+          articles.map((article) => ArticalModel.fromJson(article)).toList();
 
       //ToDO another method
       // List<ArticalModel> articalList = [];
